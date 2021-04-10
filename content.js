@@ -1,34 +1,32 @@
+import "regenerator-runtime/runtime";
+import "babel-polyfill";
 import * as tf from "@tensorflow/tfjs";
 import * as speechCommands from "@tensorflow-models/speech-commands";
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log("request", request);
-  if (request.data === "start") {
-    console.log("startedddd");
+let recognitionStarted = false;
 
-    startRecognition();
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.data === "start") {
+    console.log("HERE");
+    if (!recognitionStarted) {
+      startRecognition();
+    }
   }
 });
-
-// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//   console.log(request, sender, sendResponse);
-//   sendResponse("BOOP" + JSON.stringify("request"));
-// });
 
 const SPEECH_MODEL_TFHUB_URL =
   "https://teachablemachine.withgoogle.com/models/GWAYbcqlE/";
 
 const startRecognition = async () => {
+  recognitionStarted = true;
   const recognizer = await createModel();
   const classLabels = recognizer.wordLabels();
 
   recognizer.listen(
     (result) => {
-      const scores = result.scores; // probability of prediction for each class
-      // console.log(scores);
+      const scores = result.scores;
       const predictionIndex = scores.indexOf(Math.max(...scores));
       const prediction = classLabels[predictionIndex];
-      console.log(prediction);
 
       if (prediction === "Clap") {
         if (document.body.classList.contains("tw-dark")) {
@@ -65,6 +63,6 @@ async function createModel() {
   return recognizer;
 }
 
-var port = chrome.runtime.connect(null, {
+chrome.runtime.connect(null, {
   name: "mychannel",
 });
