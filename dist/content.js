@@ -48519,8 +48519,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var recognitionStarted = false;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.data === "start") {
-    console.log("HERE");
-
     if (!recognitionStarted) {
       startRecognition();
     }
