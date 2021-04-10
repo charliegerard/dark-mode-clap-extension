@@ -13,4 +13,4 @@ This Chrome extension uses [TensorFlow.js](https://www.tensorflow.org/js) to rec
 - Click on "Load unpacked" and select the `dist` folder generated.
 - Visit `https://app.netlify.com` and clap your hands to toggle dark mode.
 
-_The first time you use the extension, you will probably be asked for permission to use the browser's microphone._
+_The first time you use the extension, you will probably be asked for permission to use the browser's microphone, so it might take a few seconds._
