@@ -1,11 +1,13 @@
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
+  "name": "Dark mode clap extension",
+  "description": "Toggle dark mode by clapping your hands!",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": ["storage", "activeTab", "scripting"],
+  "background": {
+    "service_worker": "popup.js"
+  },
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "16": "/images/get_started16.png",
       "32": "/images/get_started32.png",
@@ -22,7 +24,7 @@
   "content_scripts": [
     {
       "js": ["content.js"],
-      "matches": ["<all_urls>"],
+      "matches": ["https://app.netlify.com/*"],
       "all_frames": true
     }
   ]

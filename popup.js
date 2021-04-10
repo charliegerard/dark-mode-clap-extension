@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import "babel-polyfill";
 
-async function start() {
+chrome.tabs.onActivated.addListener(async function (tabId, info, tab) {
   await chrome.tabs.query(
     { active: true, currentWindow: true },
     function (tabs) {
@@ -12,19 +12,17 @@ async function start() {
       );
     }
   );
-}
+});
 
-// chrome.tabs.onUpdated.addListener(async function (tabId, info, tab) {
-//   await chrome.tabs.query(
-//     { active: true, currentWindow: true },
-//     function (tabs) {
-//       chrome.tabs.sendMessage(
-//         tabs[0].id,
-//         { data: "start" },
-//         function (response) {}
-//       );
-//     }
-//   );
-// });
-
-start();
+chrome.tabs.onUpdated.addListener(async function (tabId, info, tab) {
+  await chrome.tabs.query(
+    { active: true, currentWindow: true },
+    function (tabs) {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { data: "start" },
+        function (response) {}
+      );
+    }
+  );
+});
