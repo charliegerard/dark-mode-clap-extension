@@ -4,6 +4,8 @@ Experiment to toggle [Netlify](https://app.netlify.com/)'s dark mode by clapping
 
 This Chrome extension uses [TensorFlow.js](https://www.tensorflow.org/js) to recognise the sound of clapping hands, and toggle the dark mode on/off.
 
+If you'd like to know more about this experiment, check out [the blog post](https://charliegerard.dev/blog/toggle-dark-mode-clapping-hands-chrome-extension)!
+
 ## Install
 
 - Clone the repo.

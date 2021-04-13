@@ -48517,13 +48517,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var recognitionStarted = false;
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.data === "start") {
-    if (!recognitionStarted) {
-      startRecognition();
-    }
-  }
-});
 var SPEECH_MODEL_TFHUB_URL = "https://teachablemachine.withgoogle.com/models/GWAYbcqlE/";
 
 var startRecognition = /*#__PURE__*/function () {
@@ -48613,8 +48606,8 @@ function _createModel() {
   return _createModel.apply(this, arguments);
 }
 
-chrome.runtime.connect(null, {
-  name: "mychannel"
-});
+if (!recognitionStarted) {
+  startRecognition();
+}
 },{"regenerator-runtime/runtime":"KA2S","babel-polyfill":"JIy0","@tensorflow/tfjs":"cHV2","@tensorflow-models/speech-commands":"vgcx"}]},{},["pILq"], null)
 //# sourceMappingURL=/content.js.map

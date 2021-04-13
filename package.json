@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "copy": "cp manifest.json dist/",
-    "build": "parcel build popup.js -d dist -o popup --no-minify && parcel build content.js -d dist -o content --no-minify && npm run copy"
+    "build": "parcel build content.js -d dist -o content --no-minify && npm run copy"
   },
   "license": "GNU",
   "author": {

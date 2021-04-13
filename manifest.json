@@ -3,10 +3,7 @@
   "description": "Toggle dark mode by clapping your hands!",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["storage", "activeTab", "scripting"],
-  "background": {
-    "service_worker": "popup.js"
-  },
+  "permissions": ["storage", "activeTab"],
   "action": {
     "default_icon": {
       "16": "/images/dark_mode16.png",

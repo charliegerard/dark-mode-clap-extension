@@ -5,14 +5,6 @@ import * as speechCommands from "@tensorflow-models/speech-commands";
 
 let recognitionStarted = false;
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.data === "start") {
-    if (!recognitionStarted) {
-      startRecognition();
-    }
-  }
-});
-
 const SPEECH_MODEL_TFHUB_URL =
   "https://teachablemachine.withgoogle.com/models/GWAYbcqlE/";
 
@@ -64,6 +56,6 @@ async function createModel() {
   return recognizer;
 }
 
-chrome.runtime.connect(null, {
-  name: "mychannel",
-});
+if (!recognitionStarted) {
+  startRecognition();
+}
