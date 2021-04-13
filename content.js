@@ -30,8 +30,10 @@ const startRecognition = async () => {
       if (prediction === "Clap") {
         if (document.body.classList.contains("tw-dark")) {
           document.body.classList.remove("tw-dark");
+          localStorage.setItem("nf-theme", "light");
         } else {
           document.body.classList.add("tw-dark");
+          localStorage.setItem("nf-theme", "dark");
         }
       }
     },
